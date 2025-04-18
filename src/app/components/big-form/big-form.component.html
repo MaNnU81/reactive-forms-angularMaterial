@@ -15,8 +15,34 @@
     <label for="placeOfBirth">Luogo di Nascita:</label>
     <input formControlName="placeOfBirth" id="placeOfBirth" type="text">
 
-    <label for="residence">Residenza:</label>
-    <input formControlName="residence" id="residence" type="text">
 
-    <button [disabled]=!myForm.valid type="submit">Invia</button>
+    <label for="taxcode">Codice Fiscale:</label>
+    <input type="text" formControlName="taxcode" id="taxcode">
+
+    <div class="add-address">
+        <span>Indirizzi:</span>
+        <button type="button" (click)="addAddress()">Aggiungi indirizzo</button>
+    </div>
+
+    <div formArrayName="addresses">
+        @for (address of addresses.controls; let i = $index; track $index) {
+            <div [formGroupName]="i">
+                <label for="street">Indirizzo:</label>
+                <input type="text" formControlName="street" id="street">
+                <label for="city">Via</label>
+                <input type="text" formControlName="street" id="street">
+                <label for="city">Città</label>
+                <input type="text" formControlName="city" id="city">
+                
+
+                <button type="button" (click)="removeAddress(i)">Rimuovi</button>
+            </div>
+        }
+    </div>
+
+    
+
+<button type="submit">InviaBis</button>
+
+    <!-- <button [disabled]=!myForm.valid type="submit">Invia</button> -->
 </form>
